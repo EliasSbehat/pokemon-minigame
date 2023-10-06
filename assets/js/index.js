@@ -9,6 +9,7 @@ var bgHeight = img.height;
 var deviation = bodyWidth / 2 - bgWidth / 2;
 
 var pokemonCount = 6;
+var pokemons = 0;
 var scene = 1;
 var firstpokeclick = false;
 var secondpokeclick = false;
@@ -20,8 +21,14 @@ var secondrandomLeft = Math.floor(Math.random() * bgWidth);
 
 var firstrandomTop = Math.floor(Math.random() * bgHeight);
 var secondrandomTop = Math.floor(Math.random() * bgHeight);
+if (firstrandomTop > 70) {
+  firstrandomTop = 80;
+}
+if (secondrandomTop > 70) {
+  secondrandomTop = 80;
+}
 
-$(".pokemon-count").text(pokemonCount);
+$(".pokemon-count").text(pokemons);
 
 var ary = [1, 2, 3, 4, 5, 6];
 
@@ -42,6 +49,12 @@ function clickPokemon(that) {
 
   firstrandomTop = Math.floor(Math.random() * bgHeight);
   secondrandomTop = Math.floor(Math.random() * bgHeight);
+  if (firstrandomTop > 70) {
+    firstrandomTop = 80;
+  }
+  if (secondrandomTop > 70) {
+    secondrandomTop = 80;
+  }
   var id = $(that).attr("id");
   //   setTimeout(function () {
   $(that).hide();
@@ -54,7 +67,8 @@ function clickPokemon(that) {
     secondpokeclick = true;
   }
   pokemonCount--;
-  $(".pokemon-count").text(pokemonCount);
+  pokemons++;
+  $(".pokemon-count").text(pokemons);
   if (firstpokeclick == true && secondpokeclick == true) {
     setTimeout(function () {
       if (pokemonCount > 0) {
@@ -93,7 +107,7 @@ function clickPokemon(that) {
         $("#mcontainer #first_pokemon").css("top", firstrandomTop + "px");
         $("#mcontainer #second_pokemon").css("top", secondrandomTop + "px");
       } else {
-        alert("success");
+        // alert("success");
         window.parent.postMessage("Complete", "*");
         window.location.href = "index.html";
       }
@@ -146,11 +160,13 @@ let moveListener = () => {
   moved = true;
 };
 // $(document).touchmove(function (event) {});
-document.addEventListener('touchmove', function(e) {
-    handleMoveGlass(e);
+document.addEventListener("touchmove", function (e) {
+  var touchLocation = e.targetTouches[0];
+  handleMoveGlass(touchLocation);
 });
+
 $(document).mousemove(function (event) {
-    handleMoveGlass(event);
+  handleMoveGlass(event);
 });
 function handleMoveGlass(event) {
   var my_canvas = $("#banners");
@@ -185,29 +201,33 @@ const countdownEl = document.querySelector(".countdown");
 const progressBarEl = document.querySelector(".progress");
 
 let remainingTime = 30; // seconds
+let timecount = 0;
 const totalTime = remainingTime;
 
 function countdown() {
   if (remainingTime > 0) {
     // update countdown timer
-    countdownEl.textContent = remainingTime;
+    countdownEl.textContent = timecount;
 
     // update progress bar
     const progress = ((totalTime - remainingTime) / totalTime) * 100;
-    progressBarEl.style.width = `${progress}%`;
+    progressBarEl.style.width = `${100 - progress}%`;
 
     remainingTime--;
+    timecount++;
     setTimeout(countdown, 1000);
   } else {
     // countdown finished
     progressBarEl.style.width = "100%";
     countdownEl.textContent = "0";
     setTimeout(function () {
-      if (confirm("Time's up! Will you restart the game?")) {
-        window.location.reload();
-      } else {
-        return;
-      }
+      //   if (confirm("Time's up! Will you restart the game?")) {
+      window.parent.postMessage("Complete", "*");
+    //   window.location.reload();
+
+      //   } else {
+      //     return;
+      //   }
     }, 1000);
   }
 }

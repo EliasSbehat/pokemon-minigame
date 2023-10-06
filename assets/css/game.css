@@ -4,6 +4,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  margin: 0;
 }
 
 #banners_magnifying {
@@ -62,8 +63,8 @@ body {
 }
 
 .progress-bar {
-  width: 300px;
-  height: 40px;
+  width: 280px;
+  height: 33px;
   background-color: #f2f2f2;
   position: absolute;
   left: 80px;
@@ -77,49 +78,52 @@ body {
   background-color: #f2c920;
   position: absolute;
   top: 15%;
-  left: 0;
+  left: -10px;
   width: 0%;
   z-index: 112;
   border-radius: 13px;
+  rotate: 180deg;
 }
 #timer {
-  background-image: url("../imgs/timer.png");
-  width: 90px;
-  height: 105px;
-  top: -34px;
-  left: -66px;
+  background-image: url(../imgs/timer.png);
+  width: 70px;
+  height: 85px;
+  background-size: 70px;
+  top: -28px;
+  left: -51px;
   position: absolute;
   z-index: 114;
   text-align: center;
-  line-height: 109px;
+  line-height: 86px;
 }
 .countdown {
   /* position: absolute;
   z-index: 113;
   left: 14px; */
   color: #f2c820;
-  font-size: 2.5rem;
+  font-size: 1.3rem;
   font-weight: 900;
+  font-family: sans-serif;
 }
 .pokemon-count {
-  width: 90px;
-  height: 90px;
+  width: 70px;
+  height: 70px;
   position: absolute;
-  left: 81%;
+  left: 79%;
   z-index: 114;
-  top: 20px;
-  font-size: 3rem;
+  top: 29px;
+  font-size: 2rem;
   color: #7aafde;
   font-weight: 900;
   text-shadow: 0px 2px 8px white;
   -webkit-text-stroke-color: white;
-  -webkit-text-stroke-width: 3.5px;
+  -webkit-text-stroke-width: 1.5px;
   font-family: sans-serif;
   background-image: url(../imgs/score.png);
-  background-size: 90px 90px;
+  background-size: 70px 70px;
   text-align: center;
   vertical-align: middle;
-  line-height: 100px;
+  line-height: 79px;
 }
 @media screen and (max-width: 580px) {
   #bg {
@@ -136,6 +140,54 @@ body {
   }
   .pokemon-count {
     left: 67%;
+  }
+  .progress {
+    left: -5px;
+  }
+  #timer {
+    background-image: url(../imgs/timer.png);
+    background-size: 45px 55px;
+    background-repeat: no-repeat;
+    width: 45px;
+    height: 55px;
+    top: -19px;
+    left: -33px;
+    position: absolute;
+    z-index: 114;
+    text-align: center;
+    line-height: 58px;
+  }
+  .progress-bar {
+    height: 23px;
+    background-color: #f2f2f2;
+    position: absolute;
+    left: 63px;
+    top: 36px;
+    z-index: 111;
+    border-radius: 21px;
+  }
+  .pokemon-count {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 75%;
+    z-index: 114;
+    top: 19px;
+    font-size: 1.2rem;
+    color: #7aafde;
+    font-weight: 900;
+    /* text-shadow: 0px 2px 8px white; */
+    -webkit-text-stroke-color: white;
+    -webkit-text-stroke-width: 1.5px;
+    font-family: sans-serif;
+    background-image: url(../imgs/score.png);
+    background-size: 50px 50px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 55px;
+  }
+  .countdown {
+    font-size: 1rem;
   }
 }
 
