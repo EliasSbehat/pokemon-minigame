@@ -21,13 +21,13 @@ var secondrandomLeft = Math.floor(Math.random() * bgWidth);
 
 var firstrandomTop = Math.floor(Math.random() * bgHeight);
 var secondrandomTop = Math.floor(Math.random() * bgHeight);
-if (firstrandomTop > 70) {
-  firstrandomTop = 80;
+if (firstrandomTop < 100) {
+  firstrandomTop = 100;
 }
-if (secondrandomTop > 70) {
-  secondrandomTop = 80;
+if (secondrandomTop < 100) {
+  secondrandomTop = 100;
 }
-
+console.log(firstrandomTop, secondrandomTop);
 $(".pokemon-count").text(pokemons);
 
 var ary = [1, 2, 3, 4, 5, 6];
@@ -49,12 +49,13 @@ function clickPokemon(that) {
 
   firstrandomTop = Math.floor(Math.random() * bgHeight);
   secondrandomTop = Math.floor(Math.random() * bgHeight);
-  if (firstrandomTop > 70) {
-    firstrandomTop = 80;
+  if (firstrandomTop < 100) {
+    firstrandomTop = 100;
   }
-  if (secondrandomTop > 70) {
-    secondrandomTop = 80;
+  if (secondrandomTop < 100) {
+    secondrandomTop = 100;
   }
+  console.log(firstrandomTop, secondrandomTop);
   var id = $(that).attr("id");
   //   setTimeout(function () {
   $(that).hide();
@@ -109,7 +110,8 @@ function clickPokemon(that) {
       } else {
         // alert("success");
         window.parent.postMessage("Complete", "*");
-        window.location.href = "index.html";
+        // window.location.href = "index.html";
+        $('.progress-bar').hide();
       }
     }, 1000);
   }
